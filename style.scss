@@ -1,0 +1,316 @@
+$vars:(
+  nav_bg: #273648,
+  main_bg:#F9F9F9,
+  todo_bg: #FFFFFF,
+  navlink_text:#EDF4FC,
+  navlink_gb_active:#4A90E2,
+  title_text:#30394A,
+  todo_text:#666666,
+  input_border:#DDDDDD,
+  select_item_text:#B5B5B5,
+   
+  droplist_item_text:#565656,
+  tag: #E0E0E0,
+  tag_text: #535353,
+);
+
+//Creating CSS variables as a fallback for the SASS map, also to be accessible from the script file.
+:root{
+  @each $var,$val in $vars {
+    --#{$var}: #{$val};
+  }
+  
+}
+
+//Linking the font that will be used (Dubai)
+@font-face {
+  src: url(fonts/ArbFONTS-Dubai-Regular.otf);
+  font-family: Dubai;
+}
+
+//Including the padding in the total width.
+*{
+  box-sizing: border-box;
+}
+
+//General Styling for the body and font.
+html, body {
+  margin: 0;
+  padding: 0;
+  right: 0;
+  left: 0;
+  direction: rtl; //To match the arabic content of the page.
+  font-family: Dubai;
+  }
+
+//Hiding the scrollbar.
+::-webkit-scrollbar {
+  display: none;
+  }
+
+
+//Styling of the side navigation bar.
+#Sidenav{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  overflow-x: hidden; //Disable horizontal scroll.
+  transition: 0.5s; // 0.5 second for the animation transition.
+  z-index: 1; //Make the navigation bar at the top over the other elements.
+  font-size: 18px;
+  font-style: normal;
+  background-color: map-get($vars,nav_bg);
+}
+
+
+//Positioning the close icon.
+#close{
+  position: absolute;
+  left: 11.3px;
+  top: 11.3px;
+  
+}
+
+//Positioning the logo.
+#logo{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 83px;
+  height: 32px;
+}
+
+//Positioning the container of the navigation menu elements.
+#Sidenav #Menu{
+  position: absolute;
+  top: 64px;
+  row-gap: 20px;
+  width: 100%; 
+}
+
+//Styiling the elements of the navigation menu.
+#Sidenav .navElement{
+  position: relative;
+  top: 0.9%;
+  bottom: 0.9%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 11px;
+  margin-bottom: 8px;
+  width: 100%;
+  height: 48px;
+  transition: 0.3s;
+  background-color: map-get($vars, nav_bg);
+  
+}
+
+//Positioning the arrow of the selected element from the nav menu.
+#Sidenav .arrow{
+  position: absolute;
+  left: 12px;
+  top: 16px;
+  display: none; //Hide the arrow initially, will be changed later with JavaScript.
+}
+
+//Styling the text of the nav menu elements.
+#Sidenav .navElement > a{
+  margin-right: 10px;
+  text-decoration: none;
+  color: map-get($vars,navlink_text);
+}
+
+//Styling and positioning the user details box at the bottom of the nav menu.
+
+#Sidenav #user{
+  position: absolute;
+  bottom: 0px;
+  padding-right: 16px;
+  padding-left: 13px;
+  width: 100%;
+  height: 80px;
+  border-top: 1px solid map-get($vars, todo_text);
+}
+//Making the nav menu responsive by hiding the user details box when screen hight is less than 370px.
+@media screen and (max-height: 370px){
+  #Sidenav #user{
+    display: none !important;
+  }
+}
+#Sidenav #user #avatar{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px; 
+}
+#Sidenav #user #drop{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 13px;
+}
+#Sidenav #user #name{
+  position: absolute;
+  top: 21px;
+  
+  margin: 0;
+  right: 72px;
+  font-size: 14px;
+  color: rgba($color: map-get($vars, navlink_text), $alpha: 1); 
+}
+#Sidenav #user #inst{
+  position: absolute;
+  top: 42px;
+  right: 72px;
+  margin: 0;
+  font-size: 11px;
+  color: rgba($color: map-get($vars, navlink_text), $alpha: 0.5); 
+}
+
+//Styling the header bar.
+#Header{
+  position: absolute;
+  width: 100%;
+  height: 64px;
+  top: 0;
+  direction: ltr;  //Left to right.
+  padding-top: 0.8%;
+  padding-bottom: 0.8%;
+  padding-left: 0.8%;
+  padding-right: 0.8%;
+  background-color: map-get($vars,todo_bg);
+  box-shadow: -10px 1px 10px rgba($color: #000000, $alpha: 0.05);
+}
+#Header #nav{
+  position: absolute;
+  right: 0.8%;
+  top: 40%;
+  bottom: auto;
+}
+//Styling all input field, in case of adding new fields later.
+input{
+  direction: rtl;
+  font-size: 18px;
+  padding-right: 1.6%;
+  font-family: Dubai;
+  border-color: map-get($vars,input_border);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+}
+input::placeholder {
+  color: map-get($vars,select_item_text);
+}
+
+//Styling all select elements.
+select{
+  direction: rtl;
+  font-size: 18px;
+  padding-right: 1.6%;
+  font-family: Dubai;
+  border-color: map-get($vars,input_border);
+  border-width: 1px;
+  border-radius: 4px;
+  color: map-get($vars, droplist_item_text);
+}
+
+//Sizing te search input field.
+#Header #search{
+  width: 25%;
+  height: 100%;
+  max-width: 256px;
+  
+}
+//Sizing te type select element.
+#Header #type{
+  width: 15.6%;
+  height: 100%;
+  max-width: 160px;
+}
+
+
+//Styling the main div that contains our Todo lists.
+.main{
+  padding-top: 96px;
+  margin-right: 200px;
+  transition: margin-right .5s;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 39px;
+  background-color: map-get($vars,main_bg);
+}
+
+
+.main .TaskGroup{
+  color: map-get($vars,title_text);
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 32px;
+}
+
+.main .TaskGroup:last-child{
+  margin-bottom: 0;
+}
+
+.main .TaskGroup h3{
+  margin: 0px;
+}
+.main .TaskGroup .TodoBox{
+  background-color: map-get($vars,todo_bg);
+  margin-top: 8px;
+  padding: 0px;
+  font-size: 18px;
+  box-shadow: -10px 1px 10px rgba($color: #000000, $alpha: 0.05);
+}
+
+.main .TaskGroup .TodoBox ul{
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.main .TaskGroup .TodoBox li{
+  position: relative;
+  margin: 0px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 13px;
+  padding-left: 99px;
+  color: map-get($vars,todo_text);
+  border-bottom: 0.5px solid map-get($vars, main_bg);
+  text-decoration: none;
+  font-size: 18px;
+  transition: text-decoration 0.5s;
+}
+.main .TaskGroup .TodoBox li[data-checked="true"]{
+  text-decoration: none;
+}
+
+
+
+.main .TaskGroup .TodoBox .checkIcon{
+  position: relative;
+  top: 8px;
+  right: 0;
+  margin-left: 13px;
+}
+
+.main .TaskGroup .TodoBox .tag{
+  position: absolute;
+  color: map-get($vars, tag_text);
+  background-color: map-get($vars, tag);
+  margin: 0px;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 100px;
+  width: fit-content;
+  min-width: 40px;
+  max-width: 99px;
+  max-height: 32px;
+  text-align: center;
+  vertical-align: middle;
+  top: 17px;
+  bottom: 15px;
+  left: 25px;
+}

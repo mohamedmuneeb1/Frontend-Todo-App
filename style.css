@@ -1,0 +1,314 @@
+:root {
+  --nav_bg: #273648;
+  --main_bg: #F9F9F9;
+  --todo_bg: #FFFFFF;
+  --navlink_text: #EDF4FC;
+  --navlink_gb_active: #4A90E2;
+  --title_text: #30394A;
+  --todo_text: #666666;
+  --input_border: #DDDDDD;
+  --select_item_text: #B5B5B5;
+  --droplist_item_text: #565656;
+  --tag: #E0E0E0;
+  --tag_text: #535353;
+}
+
+@font-face {
+  src: url(fonts/ArbFONTS-Dubai-Regular.otf);
+  font-family: Dubai;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  right: 0;
+  left: 0;
+  direction: rtl;
+  font-family: Dubai;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#Sidenav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  z-index: 1;
+  font-size: 18px;
+  font-style: normal;
+  background-color: #273648;
+}
+
+#close {
+  position: absolute;
+  left: 11.3px;
+  top: 11.3px;
+}
+
+#logo {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 83px;
+  height: 32px;
+}
+
+#Sidenav #Menu {
+  position: absolute;
+  top: 64px;
+  row-gap: 20px;
+  width: 100%;
+}
+
+#Sidenav .navElement {
+  position: relative;
+  top: 0.9%;
+  bottom: 0.9%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 11px;
+  margin-bottom: 8px;
+  width: 100%;
+  height: 48px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #273648;
+}
+
+#Sidenav .arrow {
+  position: absolute;
+  left: 12px;
+  top: 16px;
+  display: none;
+}
+
+#Sidenav .navElement > a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #EDF4FC;
+}
+
+#Sidenav #user {
+  position: absolute;
+  bottom: 0px;
+  padding-right: 16px;
+  padding-left: 13px;
+  width: 100%;
+  height: 80px;
+  border-top: 1px solid #666666;
+}
+
+@media screen and (max-height: 370px) {
+  #Sidenav #user {
+    display: none !important;
+  }
+}
+
+#Sidenav #user #avatar {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 16px;
+}
+
+#Sidenav #user #drop {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 13px;
+}
+
+#Sidenav #user #name {
+  position: absolute;
+  top: 21px;
+  margin: 0;
+  right: 72px;
+  font-size: 14px;
+  color: #edf4fc;
+}
+
+#Sidenav #user #inst {
+  position: absolute;
+  top: 42px;
+  right: 72px;
+  margin: 0;
+  font-size: 11px;
+  color: rgba(237, 244, 252, 0.5);
+}
+
+#Header {
+  position: absolute;
+  width: 100%;
+  height: 64px;
+  top: 0;
+  direction: ltr;
+  padding-top: 0.8%;
+  padding-bottom: 0.8%;
+  padding-left: 0.8%;
+  padding-right: 0.8%;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: -10px 1px 10px rgba(0, 0, 0, 0.05);
+          box-shadow: -10px 1px 10px rgba(0, 0, 0, 0.05);
+}
+
+#Header #nav {
+  position: absolute;
+  right: 0.8%;
+  top: 40%;
+  bottom: auto;
+}
+
+input {
+  direction: rtl;
+  font-size: 18px;
+  padding-right: 1.6%;
+  font-family: Dubai;
+  border-color: #DDDDDD;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+input::-webkit-input-placeholder {
+  color: #B5B5B5;
+}
+
+input:-ms-input-placeholder {
+  color: #B5B5B5;
+}
+
+input::-ms-input-placeholder {
+  color: #B5B5B5;
+}
+
+input::placeholder {
+  color: #B5B5B5;
+}
+
+select {
+  direction: rtl;
+  font-size: 18px;
+  padding-right: 1.6%;
+  font-family: Dubai;
+  border-color: #DDDDDD;
+  border-width: 1px;
+  border-radius: 4px;
+  color: #565656;
+}
+
+#Header #search {
+  width: 25%;
+  height: 100%;
+  max-width: 256px;
+}
+
+#Header #type {
+  width: 15.6%;
+  height: 100%;
+  max-width: 160px;
+}
+
+.main {
+  padding-top: 96px;
+  margin-right: 200px;
+  -webkit-transition: margin-right .5s;
+  transition: margin-right .5s;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 39px;
+  background-color: #F9F9F9;
+}
+
+.main .TaskGroup {
+  color: #30394A;
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 32px;
+}
+
+.main .TaskGroup:last-child {
+  margin-bottom: 0;
+}
+
+.main .TaskGroup h3 {
+  margin: 0px;
+}
+
+.main .TaskGroup .TodoBox {
+  background-color: #FFFFFF;
+  margin-top: 8px;
+  padding: 0px;
+  font-size: 18px;
+  -webkit-box-shadow: -10px 1px 10px rgba(0, 0, 0, 0.05);
+          box-shadow: -10px 1px 10px rgba(0, 0, 0, 0.05);
+}
+
+.main .TaskGroup .TodoBox ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.main .TaskGroup .TodoBox li {
+  position: relative;
+  margin: 0px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 13px;
+  padding-left: 99px;
+  color: #666666;
+  border-bottom: 0.5px solid #F9F9F9;
+  text-decoration: none;
+  font-size: 18px;
+  -webkit-transition: -webkit-text-decoration 0.5s;
+  transition: -webkit-text-decoration 0.5s;
+  transition: text-decoration 0.5s;
+  transition: text-decoration 0.5s, -webkit-text-decoration 0.5s;
+}
+
+.main .TaskGroup .TodoBox li[data-checked="true"] {
+  text-decoration: none;
+}
+
+.main .TaskGroup .TodoBox .checkIcon {
+  position: relative;
+  top: 8px;
+  right: 0;
+  margin-left: 13px;
+}
+
+.main .TaskGroup .TodoBox .tag {
+  position: absolute;
+  color: #535353;
+  background-color: #E0E0E0;
+  margin: 0px;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 100px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 40px;
+  max-width: 99px;
+  max-height: 32px;
+  text-align: center;
+  vertical-align: middle;
+  top: 17px;
+  bottom: 15px;
+  left: 25px;
+}
+/*# sourceMappingURL=style.css.map */

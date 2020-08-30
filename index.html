@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tam todo app</title>
+    
+    <script src="script.js"></script>
+    <!-- Modernizer to check if SVG assets are supported by the browser or not to perform the fallback replacement. -->
+    <script src="modernizr-custom.js"></script> 
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body onload="activateNavSel('Op1'); checkAll();" > 
+    <nav id="Sidenav" >
+    
+        <img id="logo" src="assets/logo.png" alt="logo" onclick="checkAll()">
+        <img id="close" onclick="closeNav()" src="assets/icon-close.svg" alt="">
+        
+        <div id="Menu">
+            <div id="Op1" class="navElement" onclick="activateNavSel(id)">
+                <img class="arrow" src="assets/icon-arrow-left.svg" alt="">
+                <img class="icon" src="assets/icon-list.svg" alt="">
+                <a href="#">المهام</a>
+                
+            </div>
+    
+            <div id="Op2" class="navElement" onclick="activateNavSel(id)">
+                <img class="arrow" src="assets/icon-arrow-left.svg" alt="">
+                <img class="icon" src="assets/icon-user.svg" alt="">
+                <a href="#">الأعضاء</a>
+                
+            </div>
+    
+            <div id="Op3" class="navElement" onclick="activateNavSel(id)">
+                <img class="arrow" src="assets/icon-arrow-left.svg" alt="">
+                <img class="icon" src="assets/icon-creditcard.svg" alt="">
+                <a href="#">الدفع والفواتير</a>
+                
+            </div>
+    
+            <div id="Op4" class="navElement" onclick="activateNavSel(id)">
+                <img class="arrow" src="assets/icon-arrow-left.svg">
+                <img class="icon" src="assets/icon-settings.svg">
+                <a href="#">إعدادات</a>
+                
+            </div>
+        </div>
+        
+        <div id="user">
+            <img id="avatar" src="assets/avatar.png">
+            <h5 id="name">محمد عبد الله</h5>
+            <h6 id="inst">الشركة المحدودة</h6>
+            <img id="drop" src="assets/icon-arrow-down-small.png">
+        </div>
+        
+    </nav>
+
+    <header id="Header" >
+        <input type="search" id="search" placeholder="بحث">
+        <select name="type" id="type">
+            <option value="all">جميع المهام</option>
+        </select>
+        <img onclick="openNav()" id="nav" class="icon" src="assets/icon-menu.svg">
+    </header>
+
+    <div class="main">
+        <div class="TaskGroup">
+            <h3>التصميم:</h3>
+            <div class="TodoBox">
+                <ul id="UL">
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        تصميم الشكل العام وتجهيز المهام وتسليمه
+                        
+                    </li>
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        تحويل التصميم إلى HTML + CSS 
+                        <h5 class="tag">CSS</h5>
+                    </li>
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        جعل التصميم متجاوب مع المتصفحات الصغيرة (Responsive)
+                        <h5 class="tag">CSS</h5>
+                    </li>
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        جعل التصميم متوافق كحد أدنى مع IE9
+                        <h5 class="tag">Browsers</h5>
+                    </li>
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        استخدام SASS لجعل ألوان التصميم سهلة التغيير (Skin-able/Theme-able)
+                        <h5 class="tag">SASS</h5>
+                    </li>
+                    
+                  </ul>
+            </div>
+        </div>
+    
+        <div class="TaskGroup">
+            <h3>تحسينات:</h3>
+            <div class="TodoBox">
+                <ul id="UL">
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        إمكانية إخفاء القائمة الجانبية
+                    </li>
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        إمكانية تعليم المهام كمنتهية
+                    </li>
+                    <li class="task" data-checked="false" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        إمكانية إعادة ترتيب المهام والمجموعات
+                    </li>
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        التوافقية مع أجهزة اللمس
+                    </li>
+                  </ul>
+            </div>
+        </div>
+    
+        <div class="TaskGroup">
+            <h3>أخرى:</h3>
+            <div class="TodoBox">
+                <ul id="UL">
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        تسليم المشروع النهائي في git repository مع ملاحظة استخدام git-flow
+                        
+                    </li>
+                    <li class="task" data-checked="true" onclick="checkTask(this)">
+                        <img class="checkIcon" src="assets/icon-uncheck.svg">
+                        إضافة لمساتك الخاصة في الأماكن التي تراها مناسبة مع ذكر سبب إضافتها.
+                    </li>
+
+                  </ul>
+            </div>
+        </div>
+    </div>
+      
+<!-- Fallback script for SVG PNG replacement -->
+<script>
+    if(!Modernizr.svg)var i=document.getElementsByTagName("img"),j,y;for(j=i.length;j--;)y=i[j].src,y.match(/svg$/)&&(i[j].src=y.slice(0,-3)+"png")
+</script>
+</body>
+</html>
